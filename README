@@ -27,7 +27,7 @@ COMPILING AND INSTALLING
         make
         su -c 'make install'
 
-  When compiling for PortMaster compatible devices:
+  When compiling for PortMaster compatible devices :
 
        ./bootstrap
        ./configure --enable-portmaster
