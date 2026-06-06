@@ -121,19 +121,27 @@ handler_display::set_video_mode ()
     }
 
   /* initializes SDL */
-  if (SDL_Init
-      (SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE |
-       SDL_INIT_JOYSTICK) < 0)
+#ifdef TECNOBALLZ_PORTMASTER
+  if (SDL_Init (SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE) < 0)
     {
       std::cerr << "!handler_display::set_video_mode() " <<
                 "SDL_Init() return " << SDL_GetError () << std::endl;
       throw std::runtime_error ("!handler_display::set_video_mode() "
                                 "SDL_Init() failed!");
     }
+#else
+  if (SDL_Init (SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE | SDL_INIT_JOYSTICK) < 0)
+    {
+      std::cerr << "!handler_display::set_video_mode() " <<
+                "SDL_Init() return " << SDL_GetError () << std::endl;
+      throw std::runtime_error ("!handler_display::set_video_mode() "
+                                "SDL_Init() failed!");
+    }
+#endif
 
   /* test if the video mode is available */
   Uint32 flag = SDL_ANYFORMAT;
-#ifdef TECNOBALLZ_HANDHELD_CONSOLE
+#if defined(TECNOBALLZ_HANDHELD_CONSOLE) || defined(TECNOBALLZ_PORTMASTER)
   flag = SDL_SWSURFACE | SDL_FULLSCREEN;
 #endif
   if (optionfull)

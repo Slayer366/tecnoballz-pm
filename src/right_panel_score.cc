@@ -29,8 +29,7 @@
 #include "../include/handler_resources.h"
 #include "../include/handler_high_score.h"
 
-right_panel_score *
-  right_panel_score::panel_score_singleton = NULL;
+right_panel_score * right_panel_score::panel_score_singleton = NULL;
 
 /**
  * Create the right panel score
@@ -42,6 +41,7 @@ right_panel_score::right_panel_score ()
   gigablitz_countdown = gauge_height;
   delay_gigablitz_countdown = 0;
   flip_white = false;
+//  gauge_height = 0;
   panel_width = 0;
 }
 
@@ -120,17 +120,17 @@ right_panel_score::draw_background ()
 }
 
 /**
- * Display score, number of lifes and number of bricks
+ * Display score, number of lives and number of bricks
  */
 void
 right_panel_score::text_refresh ()
 {
   draw (game_screen, SCORE_XCOORD * resolution,
         SCORE_YCOORD * resolution, current_player->score_value, 6);
-  draw (game_screen, LIFES_XCOORD * resolution,
-        LIFES_YCOORD * resolution, bricks_counter, 3);
+  draw (game_screen, LIVES_XCOORD * resolution,
+        LIVES_YCOORD * resolution, bricks_counter, 3);
   draw (game_screen, BRICKS_XCOORD * resolution,
-        BRICKS_YCOORD * resolution, current_player->number_of_lifes, 2);
+        BRICKS_YCOORD * resolution, current_player->number_of_lives, 2);
 }
 
 /**
@@ -330,8 +330,8 @@ Uint32 right_panel_score::get_width ()
 }
 
 /** List of 54 couleurs from gigablitz */
-unsigned char
-  right_panel_score::temoinCol1[GAUGE_HEIGHT] = {
+unsigned char right_panel_score::temoinCol1[GAUGE_HEIGHT] =
+{
   255,
   255,
   254,
@@ -361,8 +361,8 @@ unsigned char
   239
 };
 
-unsigned char
-  right_panel_score::temoinCol2[GAUGE_HEIGHT * 2] = {
+unsigned char right_panel_score::temoinCol2[GAUGE_HEIGHT * 2] =
+{
   255,
   255,
   255,

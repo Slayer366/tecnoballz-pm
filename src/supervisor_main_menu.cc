@@ -222,7 +222,7 @@ Sint32 supervisor_main_menu::start_new_game ()
   for (iplay = 0; iplay < number_of_players; iplay++)
     {
       Uint32
-      nlife = initial_num_of_lifes;
+      nlife = initial_num_of_lives;
       handler_players *
       player = handler_players::players_list[iplay];
       if (birth_flag)

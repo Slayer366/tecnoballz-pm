@@ -230,7 +230,7 @@ Uint32 supervisor_bricks_level::main_loop ()
   /*
    * the player has no more lives: Game Over
    */
-  if (current_player->get_num_of_lifes () <= 0)
+  if (current_player->get_num_of_lives () <= 0)
     {
       if (gameover_counter == 0)
         {
@@ -425,7 +425,7 @@ Uint32 supervisor_bricks_level::main_loop ()
   if (keyboard->command_is_pressed (handler_keyboard::CAUSE_GAME_OVER) ||
       Ecode == handler_popup_menu::CAUSE_GAME_OVER)
     {
-      current_player->remove_all_lifes ();
+      current_player->remove_all_lives ();
     }
   if (keyboard->command_is_pressed (handler_keyboard::QUIT_TO_MAIN_MENU) ||
       Ecode == handler_popup_menu::QUIT_TO_MAIN_MENU)

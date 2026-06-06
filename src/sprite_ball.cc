@@ -43,8 +43,7 @@ sprite_ball::~sprite_ball ()
 {
 }
 
-bool
-  sprite_ball::is_collisions_point_initialized = false;
+bool sprite_ball::is_collisions_point_initialized = false;
 
 
 /**
@@ -147,7 +146,7 @@ sprite_ball::set_initial_values (sprite_paddle * paddle)
 }
 
 /**
- * Initialize a first ball in a level sticked on the paddle
+ * Initialize a first ball in a level stuck on the paddle
  * @param w Width of the paddle
  */
 void
@@ -162,7 +161,7 @@ sprite_ball::init_first_ball (Sint32 w)
 }
 
 /**
- * Disable sticked ball
+ * Disable stuck ball
  */
 void
 sprite_ball::disable_stick ()
@@ -408,10 +407,10 @@ sprite_ball::accelerate ()
 }
 
 
-/** Displacement of the balls sticked to the paddle
+/** Displacement of the balls stuck to the paddle
  * */
 void
-sprite_ball::move_sticked_paddle (sprite_paddle * paddle)
+sprite_ball::move_stuck_paddle (sprite_paddle * paddle)
 {
   Sint32 j;
   switch (sticky_paddle_num)

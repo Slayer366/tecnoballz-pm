@@ -53,7 +53,7 @@ public:
    ~controller_indicators ();
   void create_indicators_sprites ();
   void display_money_and_reverse ();
-  void display_money_and_lifes ();
+  void display_money_and_lives ();
   void increase_money_amount (Uint32 amount);
 
 private:

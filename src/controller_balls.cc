@@ -104,6 +104,11 @@ controller_balls::init (Uint32 start,
   ball->init_first_ball (paddle_bottom->collision_width);
   /* one ball on the screen */
   num_of_sprites = 1;
+//  if (current_phase == BRICKS_LEVEL)
+//    {
+//      controller_ejectors *ejectors = controller_ejectors::get_instance ();
+//      ejectors->initialize_ball_positions (&sprite_ball::ejector_coords[0]);
+//    }
 }
 
 /**
@@ -227,7 +232,7 @@ controller_balls::check_outside_balls ()
       num_of_sprites = 1;
       ball->paddle_touched->stick_ball (ball);
       ball->starts_again (ball->paddle_touched);
-      ball->move_sticked_paddle (paddle);
+      ball->move_stuck_paddle (paddle);
       head_anim->start_interference ();
       current_player->remove_life (1);
       ships->force_explosion ();
@@ -370,7 +375,7 @@ controller_balls::move_balls ()
       ball->previous_x_coord = ball->x_coord;
       ball->previous_y_coord = ball->y_coord;
 
-      /*  the ball is not sticked */
+      /*  the ball is not stuck */
       if (ball->sticky_paddle_num == 0)
         {
           /* the balle moves */
@@ -405,8 +410,8 @@ controller_balls::move_balls ()
         }
 
 
-      /* displacement of the balls sticked to the paddle */
-      ball->move_sticked_paddle (paddle);
+      /* displacement of the balls stuck to the paddle */
+      ball->move_stuck_paddle (paddle);
 
       if (--ball->viewfinder_delay < 0)
         {
@@ -438,7 +443,7 @@ controller_balls::move_balls_in_guards_level ()
           continue;
         }
 
-      /*  the ball is not sticked */
+      /*  the ball is not stuck */
       if (ball->sticky_paddle_num == 0)
         {
           /* the balle moves */
@@ -471,7 +476,7 @@ controller_balls::move_balls_in_guards_level ()
           continue;
         }
 
-      /* displacement of the balls sticked to the paddle */
+      /* displacement of the balls stuck to the paddle */
       switch (ball->sticky_paddle_num)
         {
         case controller_paddles::BOTTOM_PADDLE:
@@ -618,7 +623,7 @@ controller_balls::collisions_with_paddles ()
               sprite_paddle::FREE_STICKY_PADDLE
               && !touched_paddle->stuck_ball)
             {
-              /* ball is sticked on the paddle */
+              /* ball is stuck on the paddle */
               touched_paddle->sticky_state =
                 sprite_paddle::BUSY_STICKY_PADDLE;
               touched_paddle->stuck_ball = (sprite_ball *) ball;
@@ -1051,7 +1056,10 @@ controller_balls::bricks_collision ()
           y *= controller_bricks::MAX_OF_BRICKS_HORIZONTALLY;
           x += y;
           brick_info *brick = (bricks_map + x);
+          //printf("x: %i; x_coord: %i; y_coord: %i\n", x, ball->x_coord, ball->y_coord); 
+         //x = brick->source_offset;
           /* collision between a ball and a brick? */
+          //if (0 == x)
           if (brick->source_offset == 0)
             {
               /* no collision */
@@ -1061,8 +1069,11 @@ controller_balls::bricks_collision ()
           redraw->paddle = ball->paddle_touched;
           if (!has_background)
             {
+              //printf("x: %i; x_coord: %i; y_coord: %i; brick->sprite: %p\n", x, ball->x_coord, ball->y_coord, (void*)brick->sprite);
               brick->sprite->touch ();
             }
+          //x = x - indestructible; x = x - 25088
+          //if (x >= 0)
           if (brick->source_offset >= indestructible)
             {
               /*
@@ -1071,6 +1082,7 @@ controller_balls::bricks_collision ()
               /* collision with indestructible brick */
               indes_col = true;
               /* indestructible/destructible bricks? */
+              //if ((x -= brick_width) > 0)
               if (brick->source_offset >
                   (Sint32) (indestructible + brick_width))
                 {
@@ -1089,6 +1101,7 @@ controller_balls::bricks_collision ()
                     }
                   else
                     {
+                      //x = 2;
 #ifndef SOUNDISOFF
                       audio->
                         play_sound (handler_audio::HIT_INDESTRUCTIBLE_BRICK2);
@@ -1098,6 +1111,7 @@ controller_balls::bricks_collision ()
               else
                 {
                   /* brick's really indestructible */
+                  //x = 1;
 #ifndef SOUNDISOFF
                   audio->
                     play_sound (handler_audio::HIT_INDESTRUCTIBLE_BRICK1);

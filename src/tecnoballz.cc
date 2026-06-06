@@ -383,7 +383,7 @@ tecnoballz::sprites_bitmap = NULL;
 bool tecnoballz::is_enabled_cheat_mode = false;
 bool tecnoballz::birth_flag = 0;
 Sint32 tecnoballz::difficulty_level = DIFFICULTY_EASY;
-Sint32 tecnoballz::initial_num_of_lifes = 8;
+Sint32 tecnoballz::initial_num_of_lives = 8;
 Sint32 tecnoballz::number_of_players = 1;
 const char
 tecnoballz::nomprefix[] = PREFIX;

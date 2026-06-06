@@ -62,8 +62,8 @@ private:
 
   static const Uint32 SCORE_XCOORD = 528 / 2;
   static const Uint32 SCORE_YCOORD = 116 / 2;
-  static const Uint32 LIFES_XCOORD = 528 / 2;
-  static const Uint32 LIFES_YCOORD = 152 / 2;
+  static const Uint32 LIVES_XCOORD = 528 / 2;
+  static const Uint32 LIVES_YCOORD = 152 / 2;
   static const Uint32 BRICKS_XCOORD = 592 / 2;
   static const Uint32 BRICKS_YCOORD = 152 / 2;
   /** The number of bricks which remain */

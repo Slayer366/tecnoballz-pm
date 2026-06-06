@@ -70,8 +70,8 @@ private:
   Uint32 area_number;
   /** Level number in the current area, from 1 to 13 */
   Uint32 level_number;
-  /** Number of lifes remaining */
-  Sint32 number_of_lifes;
+  /** Number of lives remaining */
+  Sint32 number_of_lives;
   /** List ot the items bought in the shop */
   //Sint32 shopping_cart[supervisor_shop::MAX_OF_CAPSULES_BOUGHT + 1];
   Sint32 shopping_cart[20];
@@ -109,13 +109,13 @@ private:
     handler_players ();
    ~handler_players ();
 public:
-  void initialize (Uint32 lifes, Uint32 areaN,
+  void initialize (Uint32 lives, Uint32 areaN,
                    Uint32 level, Uint32 monay, Uint32 grdPt);
   void set_name (const char *playername);
   char *get_name ();
   Uint32 get_area_number ();
   Uint32 get_level_number ();
-  Sint32 get_num_of_lifes ();
+  Sint32 get_num_of_lives ();
   Uint32 get_paddle_length ();
   void set_paddle_length (Uint32 length);
   Uint32 get_money_amount ();
@@ -150,7 +150,7 @@ public:
 
   void add_life (Uint32 add);
   void remove_life (Uint32 remove);
-  void remove_all_lifes ();
+  void remove_all_lives ();
 
   Sint32 getGuardPt ();
   void setGuardPt (Sint32 grdPt);

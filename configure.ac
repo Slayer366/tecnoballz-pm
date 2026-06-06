@@ -8,6 +8,13 @@ AC_ARG_ENABLE(devel,
 [  --enable-devel          Development version (default disabled)],
 enable_devel=yes, enable_devel=no)
 
+AC_ARG_ENABLE(dingux,
+[  --enable-dingux         Build for OpenDingux (default disabled)],
+enable_dingux=yes, enable_dingux=no)
+
+AC_ARG_ENABLE(portmaster,
+[  --enable-portmaster         Build for PortMaster (default disabled)],
+enable_portmaster=yes, enable_portmaster=no)
 
 # Checks for programs.
 AC_PROG_CXX
@@ -70,6 +77,14 @@ else
   CXXFLAGS="-O2 -Wall -pedantic -Wextra -std=gnu++98 $CXXFLAGS"
 fi
 
+if test "x${enable_dingux}" = "xyes"; then
+  CXXFLAGS="$CXXFLAGS -DTECNOBALLZ_DINGUX"
+fi
+
+if test "x${enable_portmaster}" = "xyes"; then
+  CXXFLAGS="$CXXFLAGS -DTECNOBALLZ_PORTMASTER"
+fi
+
 AC_OUTPUT(
   Makefile
   src/Makefile
@@ -85,6 +100,8 @@ echo "
 
 TecnoballZ ready for building!
 
+  enable_dingux     : $enable_dingux
+  enable_portmaster : $enable_portmaster
   enable_devel      : $enable_devel
 
 Type 'make' to build.

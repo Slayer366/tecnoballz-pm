@@ -61,6 +61,7 @@ public:
 private:
   static const Uint32 COORD_EJECTOR_1 = 16;
   static const Uint32 COORD_EJECTOR_2 = 224;
+//  static bool is_pos_ball_initialized;
 
 public:
     controller_ejectors ();
@@ -68,6 +69,8 @@ public:
   void create_ejectors_sprites ();
   void draw_shadow ();
   void draw ();
+//  sprite_object *get_ejector (Uint32 eject);
   sprite_ejector *get_ejector (Uint32 eject);
+//  void initialize_ball_positions (ball_ejector_coords * table);
 };
 #endif

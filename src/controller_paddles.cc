@@ -57,6 +57,8 @@ controller_paddles::controller_paddles ()
       width_maxi = 32 * resolution;
       width_mini = 32 * resolution;
       bottom_y_coord = (232 - 8) * resolution;
+//      min_coordinate = 16 * resolution;
+//      max_coordinate = 300 * resolution;
       min_coordinate = 16;
       if (resolution == 1)
         {
@@ -457,10 +459,8 @@ controller_paddles::release_all_balls ()
 Sint32 controller_paddles::get_paddles_speed ()
 {
 
-  Sint32
-    off_x = 0;
-  bool
-    is_key_down = false;
+  Sint32 off_x = 0;
+  bool is_key_down = false;
   if (keyboard->control_is_pressed (handler_keyboard::K_LEFT))
     {
       if ((Sint32) kb_paddle_speed > 0)
@@ -688,9 +688,7 @@ controller_paddles::move_robot ()
       return;
     }
   Sint32 x_paddle = paddle_robot->x_coord;
-  Sint32 x_ball =
-    target_ball->x_coord + target_ball->collision_width / 2 -
-    paddle_robot->collision_width / 2;
+  Sint32 x_ball = target_ball->x_coord + target_ball->collision_width / 2 - paddle_robot->collision_width / 2;
   Sint32 offset = x_paddle - x_ball;
   Sint32 max = 5 * resolution;
   if (offset > max)
@@ -875,40 +873,31 @@ Sint32 controller_paddles::ballePets4[14] =
 12, 8, 4, 0, 60, 56, 52, 52, 56, 60, 0, 4, 8, 12};
 
 //      table de rebonds de la balle raquette du bas
-const
-  Sint32
+const Sint32
 controller_paddles::rb09[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 32, 32, 32, 32, 20, 24, 28 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb10[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 32, 32, 32, 28, 20, 20, 16 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb11[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 28, 28, 28, 24, 16, 16, 12 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb12[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 28, 28, 24, 20, 16, 12, 8 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb13[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 28, 24, 20, 16, 12, 8, 4 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb14[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 20, 20, 20, 12, 8, 4, 4 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb15[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 16, 16, 16, 8, 8, 4, 0 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb16[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 8, 12, 12, 4, 4, 0, 0 };
-const
-  Sint32
+const Sint32
 controller_paddles::rb17[16] =
   { 4, 4, 8, 12, 16, 20, 24, 28, 28, 4, 8, 12, 0, 0, 0, 0 };
 const Sint32 *
@@ -919,64 +908,55 @@ controller_paddles::midi1Right[] =
   { rb13, rb12, rb12, rb11, rb11, rb10, rb10, rb10, rb10, rb10, rb09 };
 
 // table de rebonds de la balle raquette de droite
-const
-  Sint32
+const Sint32
   controller_paddles::rb18[] = {
   32 + 16, 20 + 16, 24 + 16, 28 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 32 + 16, 32 + 16, 32 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb19[] = {
   28 + 16, 20 + 16, 20 + 16, 16 + 16, 4 + 16, 04 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 32 + 16, 32 + 16, 32 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb20[] = {
   24 + 16, 16 + 16, 16 + 16, 12 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 28 + 16, 28 + 16, 28 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb21[] = {
   20 + 16, 16 + 16, 12 + 16, 8 + 16, 4 + 16, 04 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 28 + 16, 28 + 16, 24 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb22[] = {
   16 + 16, 12 + 16, 8 + 16, 4 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 28 + 16, 24 + 16, 20 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb23[] = {
   12 + 16, 8 + 16, 4 + 16, 4 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 20 + 16, 20 + 16, 20 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb24[] = {
   8 + 16, 8 + 16, 4 + 16, 0 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 16 + 16, 16 + 16, 16 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb25[] = {
   4 + 16, 4 + 16, 0 + 16, 0 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 8 + 16, 12 + 16, 12 + 16
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb26[] = {
   0 + 16, 0 + 16, 0 + 16, 0 + 16, 4 + 16, 4 + 16, 8 + 16, 12 + 16,
   16 + 16, 20 + 16, 24 + 16, 28 + 16, 28 + 16, 4 + 16, 8 + 16, 12 + 16
@@ -991,56 +971,47 @@ controller_paddles::midi2Right[] =
 
 
 // table de rebonds de la balle raquette du haut
-const
-  Sint32
+const Sint32
   controller_paddles::rb27[] = { 60, 0, 0, 0, 0, 52, 56, 60,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb28[] = { 60, 0, 0, 0, 60, 52, 52, 48,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb29[] = { 60, 60, 60, 60, 56, 48, 48, 44,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb30[] = { 60, 60, 60, 56, 52, 48, 48, 40,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb31[] = { 60, 60, 56, 52, 48, 44, 40, 36,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb32[] = { 60, 52, 52, 48, 44, 40, 36, 36,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb33[] = { 60, 48, 48, 16 + 32, 40, 40, 32, 32,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb34[] = { 60, 40, 44, 12 + 32, 36, 36, 32, 32,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb35[] = { 60, 36, 40, 12 + 32, 32, 32, 32, 32,
   4 + 32, 4 + 32, 8 + 32, 12 + 32, 16 + 32, 20 + 32, 24 + 32, 28 + 32
 };
@@ -1054,64 +1025,55 @@ controller_paddles::midi3Right[] =
 
 
 // table de rebonds de la balle raquette de gauche
-const
-  Sint32
+const Sint32
   controller_paddles::rb36[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 32 - 16, 32 - 16, 32 - 16,
   32 - 16, 20 - 16, 24 - 16, 28 - 16, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb37[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 32 - 16, 32 - 16, 32 - 16,
   28 - 16, 20 - 16, 20 - 16, 16 - 16, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb38[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 28 - 16, 28 - 16, 28 - 16,
   24 - 16, 16 - 16, 16 - 16, 12 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb39[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 28 - 16, 28 - 16, 24 - 16,
   20 - 16, 16 - 16, 12 + 48, 8 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb40[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 28 - 16, 24 - 16, 20 - 16,
   16 - 16, 12 + 48, 8 + 48, 4 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb41[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 20 - 16, 20 - 16, 20 - 16,
   12 + 48, 8 + 48, 4 + 48, 4 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb42[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 16 - 16, 16 - 16, 16 - 16,
   8 + 48, 8 + 48, 4 + 48, 0 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb43[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 8 + 48, 12 + 48, 12 + 48,
   4 + 48, 4 + 48, 0 + 48, 0 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48
 };
 
-const
-  Sint32
+const Sint32
   controller_paddles::rb44[] = {
   16 - 16, 20 - 16, 24 - 16, 28 - 16, 28 - 16, 4 + 48, 8 + 48, 12 + 48,
   0 + 48, 0 + 48, 0 + 48, 0 + 48, 4 + 48, 4 + 48, 8 + 48, 12 + 48

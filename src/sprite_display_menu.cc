@@ -45,6 +45,7 @@ sprite_display_menu::sprite_display_menu ()
   font_height = 8 * resolution;
   if (resolution == 2)
     {
+//      line_spacing = 16;
       line_spacing = 17;
     }
   else
@@ -557,14 +558,14 @@ sprite_display_menu::check_events ()
 
             case 13:
               clear_zone_start (24, 13, 2, 1);
-              initial_num_of_lifes += incre;
-              if (initial_num_of_lifes > 9)
+              initial_num_of_lives += incre;
+              if (initial_num_of_lives > 9)
                 {
-                  initial_num_of_lifes = 1;
+                  initial_num_of_lives = 1;
                 }
-              if (initial_num_of_lifes < 1)
+              if (initial_num_of_lives < 1)
                 {
-                  initial_num_of_lifes = 9;
+                  initial_num_of_lives = 9;
                 }
               update_strings ();
               break;
@@ -604,7 +605,7 @@ sprite_display_menu::check_events ()
 
 /**
  * Update strings menu: area code, player names, current difficulty, and
- * the number of lifes
+ * the number of lives
  */
 void
 sprite_display_menu::update_strings ()
@@ -639,7 +640,7 @@ sprite_display_menu::update_strings ()
       dest[i] = source[i];
     }
   dest = texts_of_menus[OPTIONS_SECTION + 13] + 24;
-  integer_to_ascii (initial_num_of_lifes, 2, dest);
+  integer_to_ascii (initial_num_of_lives, 2, dest);
 
   /* check if the first part of the cheat code is enabled */
   birth_flag = true;

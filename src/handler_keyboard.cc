@@ -508,6 +508,7 @@ handler_keyboard::toggle_popup_menu ()
       SDL_WM_GrabInput (SDL_GRAB_ON);
     }
 
+#ifndef TECNOBALLZ_DINGUX
   if (!command_keys[TOGGLE_POPUP_MENU])
     {
       SDL_ShowCursor (SDL_DISABLE);
@@ -516,6 +517,7 @@ handler_keyboard::toggle_popup_menu ()
     {
       SDL_ShowCursor (SDL_ENABLE);
     }
+#endif
 }
 
 /**
@@ -1398,7 +1400,34 @@ handler_keyboard::input_string (Uint32 kcode)
     case SDLK_RIGHT:
       string_cursor_pos++;
       break;
+#if defined(TECNOBALLZ_DINGUX) || defined(TECNOBALLZ_PORTMASTER)
+    case SDLK_UP:
+        {
+          Uint32 c = current_input_string[string_cursor_pos] + 1;
+          if (c > '!' && c < '\'') c = '\'';
+          if (c > '\'' && c < '-') c = '-';
+          if (c > '.' && c < '0') c = '0';
+          if (c > ':' && c < 'A') c = 'A';
+          if (c > 'Z') c = ' ';
+          current_input_string[string_cursor_pos] = c;
+          break;
+        }
+    case SDLK_DOWN:
+        {
+          Uint32 c = current_input_string[string_cursor_pos] - 1;
+          if (c > '!' && c < '\'') c = '!';
+          if (c > '\'' && c < '-') c = '\'';
+          if (c > '.' && c < '0') c = '.';
+          if (c > ':' && c < 'A') c = ':';
+          if (c < ' ') c = 'Z';
+          current_input_string[string_cursor_pos] = c;
+          break;
+        }
+#endif
 
+#ifdef TECNOBALLZ_DINGUX
+    case SDLK_LALT:
+#endif
       /* backspace key pressed */
     case SDLK_BACKSPACE:
       if (string_cursor_pos > 0)
@@ -1426,6 +1455,9 @@ handler_keyboard::input_string (Uint32 kcode)
       current_input_string[string_input_size - 1] = ' ';
       break;
 
+#ifdef TECNOBALLZ_DINGUX
+    case SDLK_LCTRL:
+#endif
       /* [Return] or [Enter] pressed, stop string input */
     case SDLK_RETURN:
       stop_string_input ();

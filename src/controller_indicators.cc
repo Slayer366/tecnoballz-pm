@@ -110,7 +110,7 @@ controller_indicators::create_indicators_sprites ()
         }
     }
   /*
-   * life sprite is only enable in the guards levels
+   * life sprite is only enabled in the guards levels
    */
   if (current_phase == GUARDS_LEVEL)
     {
@@ -203,21 +203,21 @@ controller_indicators::display_money_and_reverse ()
 }
 
 /**
- * Display amount of money and number of lifes 
+ * Display amount of money and number of lives 
  */
 void
-controller_indicators::display_money_and_lifes ()
+controller_indicators::display_money_and_lives ()
 {
   display_money_amount ();
-  Uint32 lifes = current_player->number_of_lifes;
+  Uint32 lives = current_player->number_of_lives;
   Uint32 digits = 10;
   sprite_object **chars = sprites_list + 6;
   while (digits > 0)
     {
       Sint32 i = 0;
-      while (lifes >= digits)
+      while (lives >= digits)
         {
-          lifes -= digits;
+          lives -= digits;
           i++;
         }
       digits /= 10;

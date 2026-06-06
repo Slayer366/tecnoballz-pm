@@ -100,18 +100,18 @@ handler_players::~handler_players ()
 
 /**
  * Initialize a player object before a new game
- * @param lifes number of lifes
+ * @param lives number of lives
  * @param area area number (1 to 5)
  * @param level level number in current area (1 to 12)
  * @param money amount of money
  * @param grdPt level_list of the guards
  */
 void
-handler_players::initialize (Uint32 lifes, Uint32 area, Uint32 level,
+handler_players::initialize (Uint32 lives, Uint32 area, Uint32 level,
                              Uint32 money, Uint32 grdPt)
 {
   reset_members ();
-  number_of_lifes = lifes;
+  number_of_lives = lives;
   area_number = area;
   level_number = level;
   amount_of_money = money;
@@ -131,7 +131,7 @@ handler_players::reset_members ()
   //area_number = 5; /*TEST*/
   /* level number into the current area */
   level_number = 1;
-  number_of_lifes = initial_num_of_lifes;
+  number_of_lives = initial_num_of_lives;
   clear_shopping_cart ();
   amount_of_money = 500;
   for (Uint32 i = 0; i < controller_sides_bricks::MAX_OF_SIDES_BRICKS; i++)
@@ -220,13 +220,13 @@ handler_players::get_level_number ()
 }
 
 /**
- * Return the number of life(s)
- * @return the number of life(s)
+ * Return the number of lives
+ * @return the number of lives
  */
 Sint32
-handler_players::get_num_of_lifes ()
+handler_players::get_num_of_lives ()
 {
-  return number_of_lifes;
+  return number_of_lives;
 }
 
 /**
@@ -660,36 +660,36 @@ handler_players::setGuardPt (Sint32 grdPt)
 }
 
 /**
- * Add one or more lifes
- * @param add number of lifes to add
+ * Add one or more lives
+ * @param add number of lives to add
  */
 void
 handler_players::add_life (Uint32 add)
 {
-  number_of_lifes += add;
+  number_of_lives += add;
 }
 
 /**
- * Remove one or more lifes
- * @param add number of lifes to remove 
+ * Remove one or more lives
+ * @param add number of lives to remove 
  */
 void
 handler_players::remove_life (Uint32 remove)
 {
-  number_of_lifes -= remove;
-  if (number_of_lifes < 0)
+  number_of_lives -= remove;
+  if (number_of_lives < 0)
     {
-      number_of_lifes = 0;
+      number_of_lives = 0;
     }
 }
 
 /**
- * Remove all lifes, when the game over is forced 
+ * Remove all lives, when the game over is forced 
  */
 void
-handler_players::remove_all_lifes ()
+handler_players::remove_all_lives ()
 {
-  number_of_lifes = 0;
+  number_of_lives = 0;
 }
 
 /*
@@ -723,7 +723,7 @@ handler_players::get_next_player (handler_players * player, Uint32 * next_phase,
           index = 1;
         }
       handler_players *player = players_list[index - 1];
-      if (player->number_of_lifes <= 0)
+      if (player->number_of_lives <= 0)
         {
           continue;
         }

@@ -130,7 +130,7 @@ supervisor_shop::first_init ()
                                  box_texts[TEXT_WELCOME]);
   //char * dest;
   //dest = current_player->get_name ();
-  display_text->print_int_to_string (current_player->get_num_of_lifes (),
+  display_text->print_int_to_string (current_player->get_num_of_lives (),
                                      2, box_texts[TEXT_LIVES_LEFT]);
   display_text->print_int_to_string (MAX_OF_CAPSULES_BOUGHT, 2,
                                      box_texts[TEXT_CANNOT_BUY_MORE]);
@@ -227,7 +227,7 @@ supervisor_shop::first_init ()
     0,
     0,
     5,
-    3,
+    4,
     options_frame_xmin,
     0
   );

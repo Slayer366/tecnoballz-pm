@@ -7,7 +7,7 @@
  * @author Bruno Ethvignot
  * @version $Revision$
  */
-/* 
+/*
  * copyright (c) 1991-2016 TLK Games all rights reserved
  * $Id$
  *
@@ -198,7 +198,7 @@ supervisor_guards_level::main_loop ()
   /*
    * gameover: the player has no more lives
    */
-  if (current_player->get_num_of_lifes () <= 0)
+  if (current_player->get_num_of_lives () <= 0)
     {
       if (gameover_counter > 0)
         {
@@ -239,7 +239,7 @@ supervisor_guards_level::main_loop ()
       
       display->lock_surfaces ();
       viewfinders_paddles->run ();
-      player_indicators->display_money_and_lifes ();
+      player_indicators->display_money_and_lives ();
       font_game->move ();
       sprites->draw ();
       if (gameover_counter >= 1)
@@ -284,7 +284,7 @@ supervisor_guards_level::main_loop ()
           money_capsules->move_bottom ();
           power_up_capsules->move_in_guardians_level ();
           font_game->move ();
-          player_indicators->display_money_and_lifes ();
+          player_indicators->display_money_and_lives ();
           /* move Gigablitz and check collision with paddle */
           gigablitz->run_in_guardians_level ();
           explosions->play_animation ();
@@ -320,7 +320,7 @@ supervisor_guards_level::main_loop ()
               is_victory = current_player->zlastlevel ();
               if (is_victory)
                 {
-                  current_player->remove_all_lifes ();
+                  current_player->remove_all_lives ();
                   count_next = 0;
                 }
               else
@@ -353,7 +353,7 @@ supervisor_guards_level::main_loop ()
   if (keyboard->command_is_pressed (handler_keyboard::CAUSE_GAME_OVER) ||
       popup_event == handler_popup_menu::CAUSE_GAME_OVER)
     {
-      current_player->remove_all_lifes ();
+      current_player->remove_all_lives ();
     }
   if (keyboard->command_is_pressed (handler_keyboard::QUIT_TO_MAIN_MENU) ||
       popup_event == handler_popup_menu::QUIT_TO_MAIN_MENU)

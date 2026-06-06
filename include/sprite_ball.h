@@ -31,6 +31,16 @@ class sprite_ball;
 class controller_ejectors;
 class sprite_ejector;
 #include "../include/sprite_object.h"
+
+/** Coordinates of the ball on the ejectors */
+//typedef struct
+//  {
+//    Sint32 x_coord;
+//    Sint32 y_coord;
+//  }
+//ball_ejector_coords;
+
+
 #include "../include/sprite_paddle.h"
 #include "../include/controller_bricks.h"
 #include "../include/controller_viewfinders.h"
@@ -125,7 +135,7 @@ private:
   Sint32 start_delay_counter;
     /** Initial delay before the ball leaves the paddle */
   Sint32 start_delay;
-    /** Direction of the viewfinder when the ball is sticked
+    /** Direction of the viewfinder when the ball is stuck
      * on a paddle: from 0 to 13 */
   Sint32 viewfinder_direction;
     /** Counter delay before change direction of the viewfinder */
@@ -154,6 +164,8 @@ private:
   static Sint16 velocities_speed_3[];
     /** Displacement offsets of speed 1 */
   static Sint16 velocities_speed_4[];
+    /** Coordinates of the balls on the ejectors */
+//  static ball_ejector_coords ejector_coords[];
     /** Possible directions of a ball when
      * a player activates the tilt */
   static const Sint32 tilt_directions[16][16];
@@ -188,12 +200,14 @@ public:
   void set_size_2 ();
   void set_size_3 ();
   void set_maximum_speed ();
+//  void enbale_on_ejector (Uint32 eject_id, Uint32 otime);
   void enable_on_ejector (Uint32 id, Uint32 delay, sprite_ejector * ejector);
+//  void set_on_ejector (Uint32 eject_id, Uint32 otime = 1);
   void set_on_ejector (Uint32 id, Uint32 otime = 1);
   sprite_ejector *is_on_ejector ();
   void disable_stick ();
   void accelerate ();
-  void move_sticked_paddle (sprite_paddle * paddle);
+  void move_stuck_paddle (sprite_paddle * paddle);
   virtual bool collision (sprite_object * sprite);
 
 private:

@@ -80,6 +80,23 @@
 #define TECNOBALLZ_HANDHELD_CONSOLE
 #endif
 
+/** OpenDingux port (GCW Zero) */
+/* define TECNOBALLZ_DINGUX */
+#ifdef TECNOBALLZ_DINGUX
+#undef TECNOBALLZ_PSP
+#undef TECNOBALLZ_GP2X
+#undef TECNOBALLZ_HANDHELD_CONSOLE
+#endif
+
+/** PortMaster custom port (Anbernic, Powkiddy, etc.) */
+/* define TECNOBALLZ_PORTMASTER */
+#ifdef TECNOBALLZ_PORTMASTER
+#undef TECNOBALLZ_DINGUX
+#undef TECNOBALLZ_PSP
+#undef TECNOBALLZ_GP2X
+#undef TECNOBALLZ_HANDHELD_CONSOLE
+#endif
+
 class tecnoballz;
 class configfile;
 class handler_high_score;
@@ -176,8 +193,8 @@ protected:
   static bool is_enabled_cheat_mode;
   /** True if six names of menu initialized to 040670 */
   static bool birth_flag;
-  /** Number of initial lifes */
-  static Sint32 initial_num_of_lifes;
+  /** Number of initial lives */
+  static Sint32 initial_num_of_lives;
   /** Number of players from 1 to 6 */
   static Sint32 number_of_players;
   static const char nomprefix[];

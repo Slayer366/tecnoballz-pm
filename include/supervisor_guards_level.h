@@ -69,7 +69,7 @@ private:
   /** Sprite of the money capsule to the left of amount money */
   sprite_object *money_indicator;
   sprite_object *sprite_playername;
-  sprite_capsule *ptBobLifes;
+  sprite_capsule *ptBobLives;
   handler_popup_menu *popup_menu;
   /** Area number from 1 to 5 */
   Uint32 area_number;

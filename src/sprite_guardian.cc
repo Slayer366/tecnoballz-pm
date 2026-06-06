@@ -7,7 +7,7 @@
  * @author Bruno Ethvignot
  * @version $Revision$
  */
-/* 
+/*
  * copyright (c) 1991-2016 TLK Games all rights reserved
  * $Id$
  *

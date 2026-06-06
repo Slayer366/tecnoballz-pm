@@ -155,3 +155,28 @@ controller_ejectors::get_ejector (Uint32 id)
     }
   return NULL;
 }
+
+/**
+ * Initialize the table of the positions of the balls on the ejectors. 
+ * @param table Pointer to the structure of the ball ejectors
+ */
+//bool controller_ejectors::is_pos_ball_initialized = false;
+//void
+//controller_ejectors::initialize_ball_positions (ball_ejector_coords * table)
+//{
+//  /* is the position of the balls already initialized? */
+//  if (is_pos_ball_initialized)
+//    {
+//      return;
+//    }
+//  is_pos_ball_initialized = true;
+//
+//  for (Uint32 i = 0; i < max_of_sprites; i++)
+//    {
+//      table->x_coord =
+//        (table->x_coord * resolution) + sprites_list[i]->get_x_coord ();
+//      table->y_coord =
+//        (table->y_coord * resolution) + sprites_list[i]->get_y_coord ();
+//      table++;
+//    }
+//}

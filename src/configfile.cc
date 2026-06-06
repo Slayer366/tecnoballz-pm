@@ -36,6 +36,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if defined(TECNOBALLZ_DINGUX) || defined(TECNOBALLZ_PORTMASTER)
+  static const int DEFAULT_RESOLUTION = 1;
+#else
+  static const int DEFAULT_RESOLUTION = 2;
+#endif
+
 const char *
 configfile::language_to_string[MAX_OF_LANGUAGES] =
 {
@@ -88,12 +94,12 @@ configfile::resetvalue ()
 #ifndef SOUNDISOFF
   handler_audio::is_audio_enable = 1;
 #endif
-  resolution = 2;
+  resolution = DEFAULT_RESOLUTION;
   has_background = false;
   is_verbose = false;
   handler_display::optionfull = false;
   difficulty_level = DIFFICULTY_NORMAL;
-  initial_num_of_lifes = 5;
+  initial_num_of_lives = 5;
   number_of_players = 1;
   char *user = getenv ("USER");
   if (user == NULL)
@@ -263,12 +269,12 @@ configfile::load ()
   Sint32 res = 0;
   if (!parser->read_int ("resolution", &res))
     {
-      res = 2;
+      res = DEFAULT_RESOLUTION;
     }
   resolution = res;
   if (resolution < 1 || resolution > 2)
     {
-      resolution = 2;
+      resolution = DEFAULT_RESOLUTION;
     }
   if (resolution == 2)
     {
@@ -280,14 +286,14 @@ configfile::load ()
     }
   has_background = false;
 
-  // read number of lifes from 1 to 9
-  if (!parser->read_int ("lifes", &initial_num_of_lifes))
+  // read number of lives from 1 to 9
+  if (!parser->read_int ("lives", &initial_num_of_lives))
     {
-      initial_num_of_lifes = 5;
+      initial_num_of_lives = 5;
     }
-  if (initial_num_of_lifes < 1 || initial_num_of_lifes > 9)
+  if (initial_num_of_lives < 1 || initial_num_of_lives > 9)
     {
-      initial_num_of_lifes = 5;
+      initial_num_of_lives = 5;
     }
 
   // read difficulty DIFFICULTY_EASY, DIFFICULTY_NORMAL,
@@ -403,8 +409,8 @@ configfile::save ()
       fprintf (config,
                "\n\t;; difficulty 1 (easy), 2 (hard), 3 (madness) or 4 (suicidal)\n");
       fprintf (config, "\t(difficulty   %d)\n", difficulty_level);
-      fprintf (config, "\n\t;; number of lifes (1 to 9)\n");
-      fprintf (config, "\t(lifes   %d)\n", initial_num_of_lifes);
+      fprintf (config, "\n\t;; number of lives (1 to 9)\n");
+      fprintf (config, "\t(lives   %d)\n", initial_num_of_lives);
       fprintf (config, "\n\t;; number of players (1 to 6)\n");
       fprintf (config, "\t(players   %d)\n", number_of_players);
       fprintf (config, "\n\t;; players names\n");
