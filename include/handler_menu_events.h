@@ -66,7 +66,7 @@ class handler_menu_events:public virtual tecnoballz
     Uint32 row_max;
     Uint32 current_row;
 
-    Uint32 shop_hack;
+//    Uint32 shop_hack;
 
     Sint32 key_delay;
     Uint32 previous_key_code_down;
