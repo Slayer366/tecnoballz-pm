@@ -197,6 +197,8 @@ private:
   Uint32 channels_volume;
   /** Identifier of the current music loaded and played */
   Sint32 current_music_id;
+  /** Pointer to the current music loaded and played */
+//  Mix_Music *current_music;
   /** Pointer to the Amiga song module (Protracker format) */
   MODULE *song_module;
   /** Size of all waves used for sounds effect */

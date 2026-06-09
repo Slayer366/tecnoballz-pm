@@ -60,6 +60,9 @@
 
 /** Force bytes copy (SPARC unaligned memory access) */
 /* #define BYTES_COPY */
+#ifndef SCOREFILE
+#define SCOREFILE "tecnoball"
+#endif
 #ifndef PREFIX
 #define PREFIX ""
 #endif
